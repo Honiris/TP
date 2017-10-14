@@ -31,12 +31,12 @@ let is_alive cell = cell <> empty ;;
 (*   insert here needed simple functions on lists    *)
 
 let draw_line list size col =
-  let rec dl l1 si i =
-    match list with
+  let rec dl l1 i =
+    match l1 with
       | []   -> ()
-      | e::q -> draw_cell (col, size * i) cell_size (cell_color (nth_int i list)); draw_line q size col
+      | e::q -> draw_cell (col, size * i) cell_size (cell_color (nth_int i list)); dl q (i+1)
   in
-  dl list size 0 ;;
+  dl list 0 ;;
 
 
 let rec nth_list i list =
