@@ -133,15 +133,12 @@ let draw_cell (x, y) size color =
   draw_rect (x+1) (y+1) size size ;;
 
 let draw_board board size =
-  begin
-  clear_graph ();
   let rec db lg =
     match lg with
       | 0 -> draw_line (nth_list 0 board) size (size-3)
       | n -> draw_line (nth_list n board) size (size*n+size-3); db (lg-1)
   in
-  db (length board)
-  end ;;
+  db (length board);
 
 (************************************************************)
 (*                     Game of life                         *)
@@ -183,3 +180,6 @@ let rec game board n =
   match n with
     | 0 -> draw_board board cell_size 
     | n -> draw_board board cell_size; game (next_generation board) (n-1) ;;
+
+let new_game size nb_cell n =
+  game (new_board size nb_cell) n ;;
