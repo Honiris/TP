@@ -138,7 +138,7 @@ let draw_board board size =
       | 0 -> draw_line (nth_list 0 board) size (size-3)
       | n -> draw_line (nth_list n board) size (size*n+size-3); db (lg-1)
   in
-  db (length board);
+  db (length board) ;;
 
 (************************************************************)
 (*                     Game of life                         *)
