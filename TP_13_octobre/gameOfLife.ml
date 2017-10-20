@@ -139,19 +139,10 @@ let draw_board board size =
 (************************************************************)
 
 let rules0 cell near =
-  if cell = 0
-  then
-    if near = 3
-    then
-      1
-    else
-      0
-  else
-    if near = 2 || near = 3
-    then
-      1
-    else
-      0 ;;
+  match near with
+    | 2 when cell = 1| 3 when cell = 1 -> 1
+    | 3 when cell = 0                  -> 1
+    | n when (n > 3 || n < 2)          -> 0 ;;
 
 let rec seed_life board size nb_cell =
   match nb_cell with
